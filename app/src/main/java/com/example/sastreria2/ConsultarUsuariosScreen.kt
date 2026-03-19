@@ -52,7 +52,6 @@ fun ConsultarUsuariosScreen(
 
             Column(modifier = Modifier.fillMaxSize()) {
 
-                // 🔝 Título
                 Text(
                     text = "Consultar Usuarios",
                     style = MaterialTheme.typography.titleLarge,
@@ -60,7 +59,6 @@ fun ConsultarUsuariosScreen(
                     modifier = Modifier.padding(16.dp)
                 )
 
-                // 📦 Tarjeta blanca
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
@@ -72,7 +70,6 @@ fun ConsultarUsuariosScreen(
 
                     Column {
 
-                        // ✅ MENSAJE DE ÉXITO
                         if (mensaje.isNotEmpty()) {
                             Text(
                                 text = mensaje,

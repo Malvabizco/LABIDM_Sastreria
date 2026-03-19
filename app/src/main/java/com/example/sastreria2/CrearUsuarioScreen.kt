@@ -84,7 +84,7 @@ fun CrearUsuarioScreen(
                 // 🔙 Encabezado
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
-                        onClick = { onNavigateBack("") }, // 👈 FIX
+                        onClick = { onNavigateBack("") },
                         modifier = Modifier.background(Color(0xFFD1E3F3), RoundedCornerShape(12.dp))
                     ) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Atrás", tint = Color(0xFF4A148C))
@@ -120,7 +120,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // 🔒 Contraseña
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
@@ -139,7 +138,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // 🔒 Confirmar
                 OutlinedTextField(
                     value = confirmPassword,
                     onValueChange = { confirmPassword = it },
@@ -158,7 +156,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // 👤 Rol
                 Text("Rol", color = Color.Gray)
                 ExposedDropdownMenuBox(
                     expanded = expandedRol,
@@ -193,7 +190,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // 🔘 Estado
                 Text("Estado", color = Color.Gray)
                 ExposedDropdownMenuBox(
                     expanded = expandedEstado,
@@ -228,7 +224,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(30.dp))
 
-                // 💾 Guardar
                 Button(
                     onClick = {
 
@@ -279,7 +274,6 @@ fun CrearUsuarioScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                // ❌ Cancelar
                 OutlinedButton(
                     onClick = { onNavigateBack("") },
                     modifier = Modifier.align(Alignment.CenterHorizontally)

@@ -10,7 +10,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 🔥 Base de datos
         val db = AppDatabase.getDatabase(this)
         val dao = db.usuarioDao()
 
@@ -24,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 if (pantalla == "consultar") {
 
                     ConsultarUsuariosScreen(
-                        usuarioDao = dao, // ✅ CORREGIDO
+                        usuarioDao = dao,
                         onAddClick = {
                             pantalla = "crear"
                             mensajeGlobal = ""
@@ -35,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 } else {
 
                     CrearUsuarioScreen(
-                        usuarioDao = dao, // ✅ CORREGIDO
+                        usuarioDao = dao, 
                         onNavigateBack = { mensaje ->
                             mensajeGlobal = mensaje
                             pantalla = "consultar"
