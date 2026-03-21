@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Crear ticket</string>
+
+    <!-- Generales -->
+    <string name="taller_de_costura">Taller de costura</string>
+
+    <!-- Crear Ticket -->
+    <string name="crear_ticket">Crear Ticket</string>
+    <string name="cliente">Cliente</string>
+    <string name="seleccionar_cliente">Seleccionar cliente</string>
+    <string name="tipo_de_encargo">Tipo de encargo</string>
+    <string name="tipo_de_prenda">Tipo de prenda</string>
+    <string name="descripcion">Descripción</string>
+    <string name="medidas_opcional">Medidas (opcional)</string>
+    <string name="notas_adicionales">Notas adicionales</string>
+    <string name="fecha_de_entrega">Fecha de entrega</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+
+    <!-- Consultar Tickets -->
+    <string name="consultar_tickets">Consultar Tickets</string>
+    <string name="lista_de_tickets">Lista de Tickets</string>
+    <string name="filtrar_por">Filtrar por</string>
+    <string name="no_hay_tickets">No hay tickets registrados</string>
+    <string name="todos">Todos</string>
+
+    <!-- Arrays Crear Ticket -->
+    <string-array name="tipos_encargo">
+        <item>Ajuste</item>
+        <item>Reparación</item>
+        <item>Confección</item>
+        <item>Modificación</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="tipos_prenda">
+        <item>Pantalón</item>
+        <item>Camisa</item>
+        <item>Vestido</item>
+        <item>Saco</item>
+        <item>Falda</item>
+        <item>Otro</item>
+    </string-array>
+
+    <!-- Arrays Consultar Tickets (Filtros) -->
+    <string-array name="estados_ticket">
+        <item>@string/todos</item>
+        <item>Nuevo</item>
+        <item>En progreso</item>
+        <item>Completado</item>
+        <item>Entregado</item>
+        <item>Cancelado</item>
+    </string-array>
+
+    <string-array name="meses">
+        <item>@string/todos</item>
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
+    </string-array>
+</resources>

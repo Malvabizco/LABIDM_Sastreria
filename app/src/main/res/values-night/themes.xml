@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.CrearTicket" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_main</item>
+        <item name="colorPrimaryVariant">@color/purple_light</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+</resources>

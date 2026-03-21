@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Fila superior: Cliente y Estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvCliente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="María González"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuevo"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:background="@drawable/round_corner_bg"
+                android:backgroundTint="@color/purple_button"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"/>
+        </LinearLayout>
+
+        <!-- Tipo de prenda y encargo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvTipoPrenda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vestido"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:drawableStart="@android:drawable/ic_menu_close_clear_cancel"
+                android:drawableTint="#999999"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" • "
+                android:textColor="#999999"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/tvTipoEncargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confección"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Fecha -->
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creado: 22/03/2026"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:drawableStart="@android:drawable/ic_menu_my_calendar"
+            android:drawableTint="#BBBBBB"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

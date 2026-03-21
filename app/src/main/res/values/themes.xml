@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CrearTicket" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/purple_main</item>
+        <item name="colorPrimaryVariant">@color/purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Colores secundarios -->
+        <item name="colorSecondary">@color/purple_button</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Fondo -->
+        <item name="android:windowBackground">@color/gray_light</item>
+        <item name="android:statusBarColor">@color/purple_main</item>
+
+        <!-- Para que los spinners y campos tengan fondo blanco por defecto -->
+        <item name="colorSurface">@color/white</item>
+    </style>
+
+    <style name="Theme.CrearTicket" parent="Base.Theme.CrearTicket" />
+</resources>

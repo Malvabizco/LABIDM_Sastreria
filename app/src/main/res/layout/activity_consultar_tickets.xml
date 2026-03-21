@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_gradient_bg">
+
+    <!-- Top Bar -->
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/consultar_tickets"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        android:padding="2dp"
+        android:background="@drawable/round_corner_bg"
+        android:backgroundTint="#40FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeaderTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvHeaderTitle"
+        app:tint="@color/white" />
+
+    <!-- Main Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardForm"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#FDFDFD"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderTitle">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Card Header -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/lista_de_tickets"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="normal" />
+
+                    <ImageView
+                        android:id="@+id/ivFilter"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:tint="@color/black" />
+                </RelativeLayout>
+
+                <!-- Filtros -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filtrar_por"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="18dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerFiltroCliente"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/field_bg"
+                        android:paddingStart="12dp"
+                        android:hint="Cliente" />
+
+                    <Spinner
+                        android:id="@+id/spinnerFiltroEstado"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/field_bg"
+                        android:paddingStart="12dp"
+                        android:entries="@array/estados_ticket" />
+
+                    <Spinner
+                        android:id="@+id/spinnerFiltroMes"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/field_bg"
+                        android:paddingStart="12dp"
+                        android:entries="@array/meses" />
+                </LinearLayout>
+
+                <!-- Lista de Tickets -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTickets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false"
+                    android:paddingBottom="8dp"
+                    tools:listitem="@layout/item_ticket"
+                    tools:itemCount="3" />
+
+                <!-- Empty State (inicialmente invisible, visible cuando no hay datos) -->
+                <LinearLayout
+                    android:id="@+id/emptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="40dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@android:drawable/ic_menu_agenda"
+                        app:tint="#CCCCCC"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_hay_tickets"
+                        android:textColor="#999999"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/white"
+        android:elevation="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@android:drawable/ic_menu_my_calendar" app:tint="@color/gray_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Perfil" android:textSize="11sp" android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@android:drawable/ic_menu_my_calendar" app:tint="@color/gray_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Usuarios" android:textSize="11sp" android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@android:drawable/ic_menu_my_calendar" app:tint="@color/gray_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Inicio" android:textSize="11sp" android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@android:drawable/ic_menu_my_calendar" app:tint="@color/gray_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cliente" android:textSize="11sp" android:textColor="@color/gray_text"/>
+        </LinearLayout>
+
+        <!-- Pestaña activa: Tickets (ajusta el peso y fondo morado según necesites) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:background="@drawable/purple_tab_bg"
+            android:orientation="vertical"
+            android:layout_margin="8dp">
+            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:src="@android:drawable/ic_menu_agenda" app:tint="@color/purple_main"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tickets" android:textSize="11sp" android:textColor="@color/purple_main" android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
