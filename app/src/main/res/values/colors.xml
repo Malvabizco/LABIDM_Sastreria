@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple_main">#6A1B9A</color>
+    <color name="purple_light">#E1BEE7</color>
+    <color name="purple_button">#673AB7</color>
+    <color name="purple_dark">#4A148C</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray_text">#757575</color>
+    <color name="gray_hint">#999999</color>
+    <color name="gray_divider">#EEEEEE</color>
+
+    <color name="status_nuevo">#2196F3</color>      <!-- Azul -->
+    <color name="status_progreso">#FF9800</color>   <!-- Naranja -->
+    <color name="status_completado">#4CAF50</color> <!-- Verde -->
+    <color name="status_entregado">#9E9E9E</color>  <!-- Gris -->
+</resources>
