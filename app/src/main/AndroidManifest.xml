@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrearTicket">
         <activity
+            android:name="Clientes.ConsultarClientesActivity"
+            android:exported="false" />
+        <activity
+            android:name="Clientes.CrearClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
