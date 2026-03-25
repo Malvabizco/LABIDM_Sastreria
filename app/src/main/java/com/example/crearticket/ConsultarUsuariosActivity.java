@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.crearticket.adapters.ClientesAdapter;
-import com.example.crearticket.models.Client;
+import com.example.crearticket.adapters.UsuariosAdapter;
+import com.example.crearticket.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -19,66 +19,66 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientesActivity extends AppCompatActivity {
+public class ConsultarUsuariosActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerClientes;
-    private ClientesAdapter adapter;
-    private List<Client> clientList;
+    private RecyclerView rvUsers;
+    private UsuariosAdapter adapter;
+    private List<User> userList;
     private FirebaseFirestore db;
     private ProgressBar progressBar;
-    private FloatingActionButton btnAgregarCliente;
+    private FloatingActionButton fabAddUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientes);
+        setContentView(R.layout.activity_consultar_usuarios);
 
         db = FirebaseFirestore.getInstance();
-        recyclerClientes = findViewById(R.id.recyclerClientes);
+        rvUsers = findViewById(R.id.rvUsers);
         progressBar = findViewById(R.id.progressBar);
-        btnAgregarCliente = findViewById(R.id.btnAgregarCliente);
+        fabAddUser = findViewById(R.id.fabAddUser);
 
-        clientList = new ArrayList<>();
-        recyclerClientes.setLayoutManager(new LinearLayoutManager(this));
+        userList = new ArrayList<>();
+        rvUsers.setLayoutManager(new LinearLayoutManager(this));
         
-        adapter = new ClientesAdapter(clientList, client -> {
-            Intent intent = new Intent(this, DetallesClienteActivity.class);
-            intent.putExtra("clientId", client.getId());
+        adapter = new UsuariosAdapter(userList, user -> {
+            Intent intent = new Intent(this, DetallesUsuarioActivity.class);
+            intent.putExtra("userId", user.getId());
             startActivity(intent);
         });
-        recyclerClientes.setAdapter(adapter);
+        rvUsers.setAdapter(adapter);
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        btnAgregarCliente.setOnClickListener(v -> {
-            startActivity(new Intent(this, CrearClienteActivity.class));
+        fabAddUser.setOnClickListener(v -> {
+            startActivity(new Intent(this, CrearUsuarioActivity.class));
         });
 
-        loadClients();
+        loadUsers();
     }
 
-    private void loadClients() {
+    private void loadUsers() {
         progressBar.setVisibility(View.VISIBLE);
-        db.collection("clients").get()
+        db.collection("users").get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    clientList.clear();
+                    userList.clear();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        Client client = document.toObject(Client.class);
-                        client.setId(document.getId());
-                        clientList.add(client);
+                        User user = document.toObject(User.class);
+                        user.setId(document.getId());
+                        userList.add(user);
                     }
                     adapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
                 })
                 .addOnFailureListener(e -> {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(this, "Error al cargar clientes: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error al cargar usuarios: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        loadClients();
+        loadUsers();
     }
 }

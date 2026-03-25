@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrearTicket">
 
-        <!-- LOGIN (pantalla inicial) -->
+        <!-- LOGIN -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -33,7 +33,6 @@
         <!-- CLIENTES -->
         <activity android:name=".ClientesActivity" android:exported="false" />
         <activity android:name=".CrearClienteActivity" android:exported="false" />
-        <activity android:name=".DetallesClienteActivity" android:exported="false" />
 
         <!-- TICKETS -->
         <activity android:name=".ConsultarTicketsActivity" android:exported="false" />

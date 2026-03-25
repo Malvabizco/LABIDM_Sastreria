@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-    <!-- Header -->
     <View
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar Nuevo Cliente"
+        android:text="Registrar Nuevo Usuario"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -52,14 +51,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Información del Cliente"
+                android:text="Datos del Trabajador"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Se enviará un correo para que el usuario configure su propia contraseña."
+                android:textColor="@color/gray_text"
+                android:textSize="14sp"
                 android:layout_marginBottom="24dp"/>
 
             <EditText
-                android:id="@+id/etClientName"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:background="@drawable/input_rounded"
@@ -69,41 +76,37 @@
                 android:layout_marginBottom="16dp"/>
 
             <EditText
-                android:id="@+id/etClientPhone"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:background="@drawable/input_rounded"
-                android:hint="Teléfono / WhatsApp"
-                android:inputType="phone"
-                android:paddingStart="16dp"
-                android:layout_marginBottom="16dp"/>
-
-            <EditText
-                android:id="@+id/etClientEmail"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/input_rounded"
-                android:hint="Correo electrónico (opcional)"
+                android:hint="Correo electrónico"
                 android:inputType="textEmailAddress"
                 android:paddingStart="16dp"
                 android:layout_marginBottom="16dp"/>
 
-            <EditText
-                android:id="@+id/etClientAddress"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rol del Usuario"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerRole"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="52dp"
                 android:background="@drawable/input_rounded"
-                android:hint="Dirección (opcional)"
-                android:inputType="textMultiLine"
-                android:gravity="top"
-                android:padding="16dp"
+                android:entries="@array/roles_usuario"
+                android:paddingStart="12dp"
                 android:layout_marginBottom="32dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveClient"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Guardar Cliente"
+                android:text="Enviar Invitación"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 android:textStyle="bold"

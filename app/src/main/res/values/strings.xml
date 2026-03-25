@@ -52,6 +52,14 @@
         <item>Cancelado</item>
     </string-array>
 
+    <string-array name="estados_ticket_sastre">
+        <item>Nuevo</item>
+        <item>Pendiente</item>
+        <item>Falta material</item>
+        <item>Cancelado</item>
+        <item>Terminado</item>
+    </string-array>
+
     <string-array name="meses">
         <item>@string/todos</item>
         <item>Enero</item>
@@ -66,5 +74,11 @@
         <item>Octubre</item>
         <item>Noviembre</item>
         <item>Diciembre</item>
+    </string-array>
+
+    <!-- Usuarios -->
+    <string-array name="roles_usuario">
+        <item>Admin</item>
+        <item>Sastre</item>
     </string-array>
 </resources>
