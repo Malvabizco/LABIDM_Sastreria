@@ -10,23 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CrearTicket">
-
-        <!-- LOGIN (pantalla inicial) -->
+        <activity
+            android:name=".CrearClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClientesActivity"
+            android:exported="false" /> <!-- LOGIN (pantalla inicial) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- DASHBOARD -->
-        <activity android:name=".DashboardActivity" />
-
-        <!-- MAIN (crear ticket) -->
+        </activity> <!-- DASHBOARD -->
+        <activity android:name=".DashboardActivity" /> <!-- MAIN (crear ticket) -->
         <activity android:name=".MainActivity" />
-
     </application>
 
 </manifest>

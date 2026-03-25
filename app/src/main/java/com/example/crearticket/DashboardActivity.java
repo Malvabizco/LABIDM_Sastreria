@@ -37,9 +37,9 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
 
-        //btnClientes.setOnClickListener(v -> {
-            //startActivity(new Intent(this, ConsultarClientesActivity.class));
-        //});
+        btnClientes.setOnClickListener(v -> {
+            startActivity(new Intent(this, ClientesActivity.class));
+        });
 
 
         btnCerrarSesion.setOnClickListener(v -> {
