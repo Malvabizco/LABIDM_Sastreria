@@ -1,80 +1,73 @@
 package com.example.crearticket;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.crearticket.models.Client;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class CrearClienteActivity extends AppCompatActivity {
 
-    EditText etNombre, etCorreo, etPassword, etConfirmPassword;
-    Spinner spinnerRol, spinnerEstado;
-    Button btnGuardar, btnCancelar;
+    private EditText etName, etPhone, etEmail, etAddress;
+    private MaterialButton btnSave;
+    private ProgressBar progressBar;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cliente);
 
-        etNombre = findViewById(R.id.etNombre);
-        etCorreo = findViewById(R.id.etCorreo);
-        etPassword = findViewById(R.id.etPassword);
-        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        db = FirebaseFirestore.getInstance();
 
-        spinnerRol = findViewById(R.id.spinnerRol);
-        spinnerEstado = findViewById(R.id.spinnerEstado);
+        etName = findViewById(R.id.etClientName);
+        etPhone = findViewById(R.id.etClientPhone);
+        etEmail = findViewById(R.id.etClientEmail);
+        etAddress = findViewById(R.id.etClientAddress);
+        btnSave = findViewById(R.id.btnSaveClient);
+        progressBar = findViewById(R.id.progressBar);
 
-        btnGuardar = findViewById(R.id.btnGuardar);
-        btnCancelar = findViewById(R.id.btnCancelar);
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        String[] roles = {"Administrador", "Sastre"};
-        String[] estados = {"Activo", "Inactivo"};
+        btnSave.setOnClickListener(v -> saveClient());
+    }
 
-        spinnerRol.setAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, roles));
+    private void saveClient() {
+        String name = etName.getText().toString().trim();
+        String phone = etPhone.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String address = etAddress.getText().toString().trim();
 
-        spinnerEstado.setAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, estados));
+        if (name.isEmpty() || phone.isEmpty()) {
+            Toast.makeText(this, "Nombre y Teléfono son obligatorios", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        btnGuardar.setOnClickListener(v -> {
+        showLoading(true);
 
-            String nombre = etNombre.getText().toString().trim();
-            String correo = etCorreo.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
-            String confirm = etConfirmPassword.getText().toString().trim();
+        String id = db.collection("clients").document().getId();
+        Client client = new Client(id, name, phone, email, address);
 
-            String rol = spinnerRol.getSelectedItem().toString();
-            String estado = spinnerEstado.getSelectedItem().toString();
+        db.collection("clients").document(id).set(client)
+                .addOnSuccessListener(aVoid -> {
+                    showLoading(false);
+                    Toast.makeText(this, "Cliente guardado con éxito", Toast.LENGTH_SHORT).show();
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    showLoading(false);
+                    Toast.makeText(this, "Error al guardar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
 
-            if (nombre.isEmpty() || correo.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (!password.equals(confirm)) {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            Toast.makeText(this,
-                    "Usuario creado:\n" +
-                            nombre + "\n" +
-                            correo + "\n" +
-                            rol + " - " + estado,
-                    Toast.LENGTH_LONG).show();
-
-            etNombre.setText("");
-            etCorreo.setText("");
-            etPassword.setText("");
-            etConfirmPassword.setText("");
-            spinnerRol.setSelection(0);
-            spinnerEstado.setSelection(0);
-        });
-
-        btnCancelar.setOnClickListener(v -> finish());
+    private void showLoading(boolean loading) {
+        progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
+        btnSave.setEnabled(!loading);
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936393387348",
+    "project_id": "sastreria-6a29d",
+    "storage_bucket": "sastreria-6a29d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936393387348:android:cbf3254106fc918810ecc1",
+        "android_client_info": {
+          "package_name": "com.example.crearticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeu3KAiTpWf3T-LMZpZyIUbyOoydA7CUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
