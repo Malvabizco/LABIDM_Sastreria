@@ -24,6 +24,7 @@
         <!-- DASHBOARDS -->
         <activity android:name=".AdminDashboardActivity" android:exported="false" />
         <activity android:name=".SastreDashboardActivity" android:exported="false" />
+        <activity android:name=".ReportesAdmin" />
 
         <!-- USUARIOS -->
         <activity android:name=".ConsultarUsuariosActivity" android:exported="false" />
@@ -39,6 +40,7 @@
         <activity android:name=".ConsultarTicketsActivity" android:exported="false" />
         <activity android:name=".CrearTicketActivity" android:exported="false" />
         <activity android:name=".DetallesTicketActivity" android:exported="false" />
+        
 
     </application>
 

@@ -38,6 +38,13 @@ public class AdminDashboardActivity extends AppCompatActivity {
             // startActivity(new Intent(this, ConsultarTicketsActivity.class));
         });
 
+            // Dentro del metodo onCreate de AdminDashboardActivity
+        cardReports.setOnClickListener(v -> {
+            // Validar el ingreso abriendo la actividad
+            Intent intent = new Intent(AdminDashboardActivity.this, ReportesAdmin.class);
+            startActivity(intent);
+        });
+
         findViewById(R.id.btnLogout).setOnClickListener(v -> {
             mAuth.signOut();
             startActivity(new Intent(this, LoginActivity.class));
