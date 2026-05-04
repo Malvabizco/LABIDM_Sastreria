@@ -34,8 +34,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         });
 
         cardTickets.setOnClickListener(v -> {
-            // Reutilizar o crear para Admin
-            // startActivity(new Intent(this, ConsultarTicketsActivity.class));
+            startActivity(new Intent(this, AdminTickets.class));
         });
 
             // Dentro del metodo onCreate de AdminDashboardActivity
