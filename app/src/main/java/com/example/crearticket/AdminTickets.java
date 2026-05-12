@@ -19,19 +19,11 @@ public class AdminTickets extends AppCompatActivity {
 
         // 1. Inicializar componentes
         btnBack = findViewById(R.id.btnBackTickets);
-        fabAddTicket = findViewById(R.id.fabAddTicket);
 
         // 2. Configurar botón de regreso
         // Al presionarlo, cerramos esta actividad para volver al AdminDashboard
         btnBack.setOnClickListener(v -> {
             finish();
-        });
-
-        // 3. Configurar botón flotante (+)
-        // Esto te permite validar si la navegación hacia la pantalla de creación es correcta
-        fabAddTicket.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminTickets.this, CrearTicketActivity.class);
-            startActivity(intent);
         });
 
         // Nota: Como estamos validando el diseño con datos estáticos en el XML,
