@@ -11,6 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrearTicket">
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
+
         <!-- LOGIN (pantalla inicial) -->
         <activity
             android:name=".LoginActivity"
@@ -24,6 +36,9 @@
         <!-- DASHBOARDS -->
         <activity android:name=".AdminDashboardActivity" android:exported="false" />
         <activity android:name=".SastreDashboardActivity" android:exported="false" />
+        <activity android:name=".ReportesAdmin" />
+        <activity android:name=".AdminTickets" />
+
 
         <!-- USUARIOS -->
         <activity android:name=".ConsultarUsuariosActivity" android:exported="false" />
@@ -39,6 +54,7 @@
         <activity android:name=".ConsultarTicketsActivity" android:exported="false" />
         <activity android:name=".CrearTicketActivity" android:exported="false" />
         <activity android:name=".DetallesTicketActivity" android:exported="false" />
+
 
     </application>
 
